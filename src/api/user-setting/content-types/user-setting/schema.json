@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_settings",
+  "info": {
+    "singularName": "user-setting",
+    "pluralName": "user-settings",
+    "displayName": "User Setting",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userID": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "userEmail": {
+      "type": "email"
+    },
+    "userRole": {
+      "type": "enumeration",
+      "enum": [
+        "Analyst",
+        "Admin"
+      ]
+    },
+    "clientSubscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client-subscription.client-subscription",
+      "inversedBy": "userSettings"
+    },
+    "channelSettings": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

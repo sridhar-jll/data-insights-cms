@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "client_subscriptions",
+  "info": {
+    "singularName": "client-subscription",
+    "pluralName": "client-subscriptions",
+    "displayName": "Client Subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientID": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "clientSubscriptions"
+    },
+    "userSettings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-setting.user-setting",
+      "mappedBy": "clientSubscription"
+    }
+  }
+}
